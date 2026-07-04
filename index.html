@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orchid-16 | Agriculture Batch Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* কালার প্যালেট - Agriculture Theme */
+        :root {
+            --primary-dark: #1b4332;
+            --primary-green: #2d6a4f;
+            --light-green: #52b788;
+            --bg-color: #f7fcf8;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #596a7b;
+            --accent-gold: #d4a373;
+            --danger-red: #d90429;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* Navbar & Animated Mobile Menu */
+        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(45, 106, 79, 0.08); position: sticky; top: 0; z-index: 100; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; max-width: 1200px; margin: 0 auto; position: relative; }
+        .logo { font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: var(--primary-dark); text-decoration: none; }
+        .logo span { color: var(--light-green); }
+        
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links li a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 500; transition: all 0.3s ease; padding: 5px 0; }
+        .nav-links li a:hover { color: var(--primary-green); border-bottom: 2px solid var(--accent-gold); }
+
+        /* Hamburger Menu Icon Styles */
+        .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 101; }
+        .menu-toggle span { display: block; height: 3px; width: 100%; background-color: var(--primary-dark); border-radius: 3px; transition: all 0.3s ease-in-out; }
+        
+        /* Hamburger to X Animation */
+        .menu-toggle.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+        /* Running Notice */
+        .notice-bar { background: var(--primary-green); color: #fff; padding: 10px 0; overflow: hidden; position: relative; white-space: nowrap; font-size: 14px; }
+        .notice-content { display: inline-block; padding-left: 100%; animation: scrollText 25s linear infinite; }
+        @keyframes scrollText { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        /* Welcome Section */
+        .welcome-section { text-align: center; padding: 50px 20px 30px; }
+        .welcome-section h1 { font-family: 'Lora', serif; color: var(--primary-dark); font-size: 32px; margin-bottom: 10px; font-weight: 600; }
+        
+        main { flex: 1; padding: 0 5% 50px; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+        /* Premium Notice Board */
+        .notice-board { background: var(--card-bg); border-radius: 16px; padding: 35px; box-shadow: 0 15px 35px rgba(45, 106, 79, 0.08); margin-bottom: 40px; border-top: 6px solid var(--primary-green); }
+        .notice-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e0e0e0; padding-bottom: 15px; margin-bottom: 25px; }
+        .notice-header h2 { font-family: 'Lora', serif; color: var(--primary-dark); font-size: 22px; }
+        .notice-date { background: var(--primary-green); color: #fff; padding: 6px 15px; border-radius: 25px; font-size: 14px; font-weight: 500; }
+        
+        .premium-schedule-list { display: flex; flex-direction: column; gap: 15px; }
+        .schedule-card { display: flex; align-items: center; background: #fff; padding: 20px; border-radius: 12px; border-left: 5px solid var(--light-green); box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: all 0.3s ease; }
+        .schedule-card:hover { transform: translateX(8px); box-shadow: 0 8px 25px rgba(45,106,79,0.1); border-left-color: var(--primary-dark); }
+        .time-badge { background: var(--bg-color); color: var(--primary-green); padding: 8px 15px; border-radius: 8px; font-weight: 600; font-size: 14px; width: 160px; text-align: center; border: 1px solid #e0e0e0; margin-right: 20px; }
+        .subject-info { flex: 1; }
+        .subject-name { font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+        .teacher-name { font-size: 13px; color: var(--text-muted); }
+        .mention-everyone { margin-top: 25px; font-size: 15px; color: var(--danger-red); font-weight: 600; background: #fff0f0; padding: 10px 15px; border-radius: 8px; border-left: 4px solid var(--danger-red); display: inline-block; }
+
+        /* Premium Semester Plan Table */
+        .semester-plan-section { background: var(--card-bg); padding: 35px; border-radius: 16px; box-shadow: 0 15px 35px rgba(45, 106, 79, 0.08); margin-bottom: 40px; }
+        .semester-plan-section h2 { font-family: 'Lora', serif; color: var(--primary-dark); text-align: center; font-size: 26px; margin-bottom: 5px; }
+        .semester-plan-section h4 { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-weight: 400; }
+        
+        /* Table Responsive Wrapper */
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
+        
+        .styled-table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 14.5px; }
+        .styled-table th, .styled-table td { border: 1px solid #e0e0e0; padding: 12px 15px; text-align: center; white-space: nowrap; }
+        .styled-table th { background-color: var(--primary-dark); color: #fff; font-weight: 500; font-family: 'Lora', serif; }
+        .styled-table tr:nth-child(even) { background-color: #f9fdfa; }
+        .styled-table tr:hover { background-color: #f1f8f3; }
+        
+        .highlight-yellow { background-color: #fffde7; font-weight: 500; }
+        .highlight-red { background-color: #ff0000; color: white; font-weight: 600; }
+        .text-red { color: red; font-weight: 600; }
+        .text-green { color: green; font-weight: 600; }
+        .section-title { color: #d90429; font-weight: 600; font-size: 18px; margin-bottom: 10px; margin-top: 20px; }
+
+        /* Footer */
+        footer { background-color: var(--primary-dark); color: #e0e0e0; text-align: center; padding: 40px 5%; margin-top: auto; }
+        .cr-contact { margin-top: 20px; font-size: 14px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; display: inline-block; color: #b0bec5; }
+        .cr-contact span { color: var(--accent-gold); font-weight: 600; }
+
+        /* Responsive Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            
+            /* Smooth Slide-down Menu */
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background-color: #ffffff; flex-direction: column; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, box-shadow 0.3s ease; box-shadow: 0 10px 15px rgba(0,0,0,0); }
+            .nav-links.active { max-height: 350px; box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+            .nav-links li { text-align: center; border-bottom: 1px solid #f0f0f0; }
+            .nav-links li:last-child { border-bottom: none; }
+            .nav-links li a { display: block; padding: 15px 0; font-size: 16px; }
+            
+            .schedule-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .time-badge { width: auto; margin-right: 0; }
+            .notice-board, .semester-plan-section { padding: 20px 15px; }
+            .notice-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            
+            /* Make tables easier to read on mobile even with scroll */
+            .styled-table th, .styled-table td { padding: 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        const websiteData = {
+            runningNotice: "🌱 আপডেট: আগামীকাল সকাল ১০:১০ টায় এগ্রোনমি সিটি অনুষ্ঠিত হবে। | 🌾 সেমিস্টার প্ল্যান ওয়েবসাইটে যুক্ত করা হয়েছে।",
+            scheduleDate: "২৮/০৪/২০২৬",
+            scheduleNote: "@everyone - সবাইকে যথাসময়ে উপস্থিত থাকার জন্য অনুরোধ করা হলো।",
+            classes: [
+                { time: "সকাল ০৯:২০ - ১০:১৫", subject: "Entomology", teacher: "আশিক স্যার" },
+                { time: "সকাল ১০:১০ - ১১:০০", subject: "Agronomy 2nd CT", teacher: "আব্দুল বারী স্যার" },
+                { time: "সকাল ১১:২০ - ১২:১৫", subject: "Agri. Chemistry", teacher: "হাফিজ স্যার" },
+                { time: "দুপুর ১২:২০ - ০১:১৫", subject: "Agronomy", teacher: "মেজবাহ স্যার" }
+            ]
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('marquee-text').innerText = websiteData.runningNotice;
+            document.getElementById('schedule-date').innerText = websiteData.scheduleDate;
+            document.getElementById('schedule-note').innerText = websiteData.scheduleNote;
+            
+            let classListHTML = '';
+            websiteData.classes.forEach(item => {
+                classListHTML += `
+                <div class="schedule-card">
+                    <div class="time-badge">✅ ${item.time}</div>
+                    <div class="subject-info">
+                        <div class="subject-name">${item.subject}</div>
+                        <div class="teacher-name">(${item.teacher})</div>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('class-schedule-list').innerHTML = classListHTML;
+
+            // Mobile Menu Toggle Logic
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open'); // Animates the icon to X
+                navLinks.classList.toggle('active'); // Slides down the menu
+            });
+        });
+    </script>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Orchid<span>-16</span></a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#notice-board">Today's Class</a></li>
+                <li><a href="#semester-plan">Semester Plan</a></li>
+                <li><a href="#notes">Notes</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="notice-bar">
+        <div class="notice-content" id="marquee-text"></div>
+    </div>
+
+    <main>
+        <section class="welcome-section">
+            <h1>স্বাগতম অর্কিড-১৬</h1>
+            <p style="color: var(--text-muted);">কৃষি অনুষদের আমাদের ব্যাচের যাবতীয় একাডেমিক আপডেট এবং সেমিস্টার প্ল্যান।</p>
+        </section>
+
+        <section class="notice-board" id="notice-board">
+            <div class="notice-header">
+                <h2>📌 আগামীকালের ক্লাস শিডিউল</h2>
+                <span class="notice-date" id="schedule-date"></span>
+            </div>
+            <div class="premium-schedule-list" id="class-schedule-list"></div>
+            <div class="mention-everyone" id="schedule-note"></div>
+        </section>
+
+        <section class="semester-plan-section" id="semester-plan">
+            <h2>Semester Evaluation</h2>
+            <h4>(Year-3, Semester-1)</h4>
+
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Holiday</th>
+                            <th>Reason</th>
+                            <th>Duration (day/s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-yellow">22 May – 7 June, 2026</td>
+                            <td>Eid ul Azha++</td>
+                            <td>17</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600; text-align: left; padding-left: 20px;">Class Started</td>
+                            <td>08/01/2026</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; text-align: left; padding-left: 20px; color: red;">Class End (expected)</td>
+                            <td style="color: red; font-weight: 600;">30/04/2026</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; text-align: left; padding-left: 20px;" class="highlight-red">Semester Final (expected)</td>
+                            <td class="highlight-red">12/05/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-title">Syllabus evaluation:</div>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>% Chapter Completed</th>
+                            <th>CT Incomplete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Agronomy</td><td>90%</td><td class="text-green">1</td></tr>
+                        <tr><td>Soil Science</td><td>70%</td><td class="text-green">1</td></tr>
+                        <tr><td>Horticulture</td><td>100%</td><td class="text-red">0</td></tr>
+                        <tr><td>Agri. Botany</td><td>100%</td><td class="text-red">0</td></tr>
+                        <tr><td>Entomology</td><td>100%</td><td class="text-green">1</td></tr>
+                        <tr><td>Agri. Chemistry</td><td>60%</td><td class="text-red">0</td></tr>
+                        <tr><td>Agri. Statistics</td><td>90%</td><td class="text-red">0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-title">Target:</div>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>1st CT</th>
+                            <th>Date</th>
+                            <th>2nd CT</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Agri. Botany</td><td class="text-red">DONE</td><td>Agri. Botany</td><td class="text-red">DONE</td></tr>
+                        <tr><td>Entomology</td><td>03/05/2026</td><td>Entomology</td><td class="text-red">DONE</td></tr>
+                        <tr><td>Agronomy</td><td class="text-red">DONE</td><td>Agronomy</td><td>27/04/2026</td></tr>
+                        <tr><td>Horticulture</td><td class="text-red">DONE</td><td>Horticulture</td><td class="text-red">DONE</td></tr>
+                        <tr><td>Agri. Statistics</td><td class="text-red">DONE</td><td>Agri. Statistics</td><td class="text-red">DONE</td></tr>
+                        <tr><td>Soil Science</td><td class="text-red">DONE</td><td>Soil Science</td><td>30/04/2026</td></tr>
+                        <tr><td>Agri. Chemistry</td><td class="text-red">DONE</td><td>Agri. Chemistry</td><td class="text-red">DONE</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p style="font-family: 'Lora', serif; font-size: 18px; margin-bottom: 5px;">Orchid-16</p>
+        <p style="font-size: 13px; color: #8e9ca3;">Agriculture Faculty &copy; 2026</p>
+        <div class="cr-contact">
+            <p>For any query or emergency, contact your Class Representative:</p>
+            <p style="margin-top: 8px;">
+                <span>Pias Ahmed</span> | 📞 <span>01571-339512</span>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
