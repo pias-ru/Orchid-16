@@ -34,7 +34,7 @@
         .nav-links li a:hover { color: var(--primary-green); border-bottom: 2px solid var(--accent-gold); }
 
         /* Hamburger Menu Icon Styles */
-        .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 101; }
+        .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 101; }
         .menu-toggle span { display: block; height: 3px; width: 100%; background-color: var(--primary-dark); border-radius: 3px; transition: all 0.3s ease-in-out; }
         
         /* Hamburger to X Animation */
@@ -118,7 +118,7 @@
 
     <script>
         const websiteData = {
-            runningNotice: "🌱 আপডেট: আগামীকাল সকাল ১০:৩০ টায় Agri. Statistics সেমিস্টার পরিক্ষা অনুষ্ঠিত হবে।",
+            runningNotice: "🌱 আপডেট: ০৫-০৭-২০২৬ তারিখ (রবিবার), সকাল ১০:৩০ টায় Agri. Statistics সেমিস্টার পরিক্ষা অনুষ্ঠিত হবে।",
             scheduleDate: "০০/০০/২০২৬",
             scheduleNote: "@everyone - ধন্যবাদ",
             classes: [
@@ -138,7 +138,7 @@
             websiteData.classes.forEach(item => {
                 classListHTML += `
                 <div class="schedule-card">
-                    <div class="time-badge">✅ ${item.time}</div>
+                    <div class="time-badge">⚠️ ${item.time}</div>
                     <div class="subject-info">
                         <div class="subject-name">${item.subject}</div>
                         <div class="teacher-name">(${item.teacher})</div>
@@ -249,11 +249,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>A</td><td>00%</td><td class="text-green">1</td></tr>
-                        <tr><td>B</td><td>00%</td><td class="text-green">1</td></tr>
+                        <tr><td>A</td><td>00%</td><td class="text-red">1</td></tr>
+                        <tr><td>B</td><td>00%</td><td class="text-red">1</td></tr>
                         <tr><td>C</td><td>00%</td><td class="text-red">0</td></tr>
                         <tr><td>D</td><td>00%</td><td class="text-red">0</td></tr>
-                        <tr><td>E</td><td>00%</td><td class="text-green">1</td></tr>
+                        <tr><td>E</td><td>00%</td><td class="text-red">1</td></tr>
                         <tr><td>F</td><td>00%</td><td class="text-red">0</td></tr>
                         <tr><td>G</td><td>00%</td><td class="text-red">0</td></tr>
                     </tbody>
@@ -273,11 +273,11 @@
                     </thead>
                     <tbody>
                         <tr><td>A1</td><td class="text-red">null</td><td>A2</td><td class="text-red">null</td></tr>
-                        <tr><td>B1</td><td>null</td><td>B2</td><td class="text-red">null</td></tr>
-                        <tr><td>C1</td><td class="text-red">null</td><td>C2</td><td>null</td></tr>
+                        <tr><td>B1</td><td class="text-red">null</td><td>B2</td><td class="text-red">null</td></tr>
+                        <tr><td>C1</td><td class="text-red">null</td><td>C2</td><td class="text-red">null</td></tr>
                         <tr><td>D1</td><td class="text-red">null</td><td>D2</td><td class="text-red">null</td></tr>
                         <tr><td>E1</td><td class="text-red">null</td><td>E2</td><td class="text-red">null</td></tr>
-                        <tr><td>F1</td><td class="text-red">null</td><td>F2</td><td>null</td></tr>
+                        <tr><td>F1</td><td class="text-red">null</td><td>F2</td><td class="text-red">null</td></tr>
                         <tr><td>G1</td><td class="text-red">null</td><td>G2</td><td class="text-red">null</td></tr>
                     </tbody>
                 </table>
@@ -287,7 +287,7 @@
 
     <footer>
         <p style="font-family: 'Lora', serif; font-size: 18px; margin-bottom: 5px;">Orchid-16</p>
-        <p style="font-size: 13px; color: #8e9ca3;">Agriculture Faculty &copy; 2026</p>
+        <p style="font-size: 13px; color: #8e9ca3;">Department of <br>Crop Science and Technology &copy; 2022-23 <br> University of Rajshahi</p>
         <div class="cr-contact">
             <p>For any query or emergency, contact your Class Representative:</p>
             <p style="margin-top: 8px;">
