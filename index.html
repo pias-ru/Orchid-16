@@ -38,3 +38,266 @@ button{font-family:inherit}
 main{padding:46px 0 80px}
 .panel{display:none}.panel.on{display:block}
 .head{margin-bottom:30px;text-align:center}
+.head h2{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1.25}
+.head p{color:var(--muted);font-style:italic;margin-top:6px}
+.head::after{content:"";display:block;width:90px;height:5px;border-top:1px solid var(--burgundy);border-bottom:1px solid var(--burgundy);margin:16px auto 0}
+h3.sec{font-family:var(--serif);font-size:1.1rem;color:var(--navy);margin:42px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--navy);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h3.sec span{font-family:var(--body);font-size:.92rem;font-weight:400;color:var(--muted)}
+h3.sec span b{color:var(--burgundy);font-weight:600}
+
+/* Statement */
+.statement{display:grid;grid-template-columns:1fr 1.1fr;gap:0;background:var(--sheet);border:1px solid var(--navy);outline:1px solid var(--navy);outline-offset:4px;margin:6px 5px 0}
+.expected{padding:36px 30px;text-align:center;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center}
+.lbl{font-size:.92rem;color:var(--muted)}
+.big{font-family:var(--serif);font-size:4.2rem;font-weight:700;color:var(--navy);line-height:1.1;margin:8px 0 6px}
+.expected p{font-size:.92rem;color:var(--muted);font-style:italic}
+.figs{padding:14px 28px;display:flex;flex-direction:column;justify-content:center}
+.fig{display:flex;align-items:baseline;gap:10px;padding:14px 0;border-bottom:1px solid var(--rule-soft)}
+.fig:last-child{border-bottom:0}
+.fig .t{flex:none;max-width:68%}
+.fig .t b{display:block;font-weight:600;color:var(--ink)}
+.fig .t small{color:var(--muted);font-size:.86rem}
+.fig .dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px);min-width:12px}
+.fig .v{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy)}
+.fig.req .v{color:var(--burgundy)}
+
+/* Scale */
+.scale{position:relative;height:8px;background:var(--rule-soft);margin:54px 8px 50px;border:1px solid var(--rule)}
+.scale .fill{position:absolute;inset:0 auto 0 0;background:var(--navy-2)}
+.mk{position:absolute;top:-9px;width:2px;height:24px;background:var(--navy)}
+.mk.t{background:var(--burgundy)}
+.mk span{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.84rem;font-weight:600;color:var(--navy)}
+.mk.up span{bottom:30px}.mk.dn span{top:32px}
+.mk.t span{color:var(--burgundy)}
+.ends{display:flex;justify-content:space-between;margin:-38px 4px 30px;font-size:.8rem;color:var(--muted)}
+.note{text-align:center;color:var(--muted)}
+.note b{color:var(--navy)}
+
+/* Semester bars */
+.bars{display:grid;gap:0}
+.bar{display:grid;grid-template-columns:72px 1fr 56px;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-soft)}
+.track{height:6px;background:var(--rule-soft)}
+.track i{display:block;height:100%;background:var(--navy-2)}
+.bar b{text-align:right;color:var(--navy);font-family:var(--serif);font-size:.95rem}
+
+/* Tables */
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--sheet);border-top:2px solid var(--navy)}
+table.rt{min-width:660px}
+th{font-size:.86rem;font-weight:600;color:var(--navy);text-align:left;padding:12px 14px;border-bottom:1px solid var(--navy);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums}
+td:first-child{font-weight:500}
+.n{text-align:right}
+tbody tr:hover td{background:#f6f4ec}
+.g{font-weight:600;color:var(--navy)}
+.g.top{color:var(--burgundy)}
+tfoot td{font-weight:700;color:var(--navy);border-top:3px double var(--navy);border-bottom:1px solid var(--navy);background:var(--paper)}
+.tbl-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:36px 0 12px}
+.tbl-h:first-child{margin-top:0}
+.tbl-h h3{font-family:var(--serif);font-size:1.1rem;color:var(--navy)}
+.tbl-h span{color:var(--muted);font-size:.95rem}
+.tbl-h span b{color:var(--burgundy);font-weight:600}
+
+/* Responsive */
+@media(max-width:820px){
+  .burger{display:flex}
+  .nav{position:absolute;top:78px;left:0;right:0;background:var(--sheet);flex-direction:column;align-items:stretch;gap:0;padding:4px 22px 10px;border-bottom:4px double var(--navy);max-height:0;overflow:hidden;visibility:hidden;transition:max-height .3s,visibility .3s}
+  .nav.show{max-height:320px;visibility:visible}
+  .nav button.link{text-align:left;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
+  .nav button.link[aria-selected="true"]{border-bottom-color:var(--rule-soft);color:var(--burgundy)}
+  .statement{grid-template-columns:1fr}
+  .expected{border-right:0;border-bottom:1px solid var(--rule)}
+}
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  main{padding:32px 0 60px}
+  .bar-top{height:70px}.nav{top:70px}
+  .seal{width:40px;height:40px}.brand{font-size:1.08rem}
+  .head h2{font-size:1.35rem}
+  .big{font-size:3.4rem}
+  .expected{padding:26px 18px}.figs{padding:6px 18px}
+  .fig .v{font-size:1.3rem}
+  .mk span{font-size:.76rem}
+  .bar{grid-template-columns:56px 1fr 50px;gap:12px}
+  h3.sec{flex-direction:column;gap:2px}
+  th,td{padding:10px 8px}
+  table.rt{min-width:0}
+  table.rt thead{display:none}
+  table.rt tr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);padding:6px 0}
+  table.rt td{border:0!important;padding:5px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:none!important}
+  table.rt td::before{content:attr(data-label);color:var(--muted);font-size:.84rem;font-weight:400}
+  table.rt td:first-child{grid-column:1/-1;padding-top:10px;color:var(--navy);font-weight:600}
+  table.rt td:first-child::before{content:none}
+  table.rt tfoot tr{border-top:3px double var(--navy);background:var(--paper)}
+}
+@media print{.mast{position:static}.burger{display:none}.panel{display:block!important}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap bar-top">
+    <div class="id">
+      <svg class="seal" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="#17274a" stroke-width="2"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="#b08d3c" stroke-width="1"/>
+        <text x="24" y="29.5" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#17274a">PA</text>
+      </svg>
+      <div class="brand">PIAS AHMED<small>.   2210869121</small></div>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <button class="link" aria-selected="true" data-t="overview">Overview</button>
+      <button class="link" aria-selected="false" data-t="sheet1">Semester Records</button>
+      <button class="link" aria-selected="false" data-t="sheet2">Assessment Details</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="panel on" id="overview">
+    <div class="head"><h2>Academic Standing</h2><p>Cumulative grade point average and target</p></div>
+
+    <div class="statement">
+      <div class="expected">
+        <div class="lbl">Expected CGPA</div>
+        <div class="big" id="expVal">3.616</div>
+        <p>After all 8 semesters</p>
+      </div>
+      <div class="figs">
+        <div class="fig"><div class="t"><b>Existing CGPA</b><small>First 5 semesters</small></div><span class="dots"></span><span class="v">3.48</span></div>
+        <div class="fig"><div class="t"><b>Targeted CGPA</b><small>Overall goal</small></div><span class="dots"></span><span class="v">3.75</span></div>
+        <div class="fig req"><div class="t"><b>Maximum possible CGPA</b><small>If all three semesters score 4.00</small></div><span class="dots"></span><span class="v" id="maxVal">3.675</span></div>
+      </div>
+    </div>
+
+    <h3 class="sec">Progress to Target<span>Scale: <b>3.00 to 4.00</b></span></h3>
+    <div class="scale" id="scale"></div>
+    <p class="note" id="note"></p>
+
+
+    <h3 class="sec">Semester GPA<span>Out of <b>4.00</b></span></h3>
+    <div class="bars" id="bars"></div>
+  </section>
+
+  <section class="panel" id="sheet1">
+    <div class="head"><h2>Semester Records</h2><p>Credit, grade and grade point for each semester</p></div>
+    <div id="sems"></div>
+  </section>
+
+  <section class="panel" id="sheet2">
+    <div class="head"><h2>Assessment Details</h2><p>Year 3, Semester 2 (Exam 2025)</p></div>
+    <div id="assess"></div>
+  </section>
+
+</main>
+
+<script>
+const SEMS = [
+  {name:'Y3-S2', gpa:'3.855', rows:[
+    ['Agronomy',2,4],['Soil Science',2,4],['Horticulture',2,4],['Plant Pathology',2,3.75],
+    ['Genetics and Plant Breeding',2,3.5],['Agricultural Extension',2,4],['Horticulture (Lab)',1,3.75],
+    ['Plant Pathology (Lab)',1,3.5],['Genetics and Plant Breeding (Lab)',1,3.5],['Agricultural Extension (Lab)',1,4],
+    ['Computer Application',1,4],['Viva-voce',2,4]]},
+  {name:'Y4-S1', gpa:'3.829', rows:[
+    ['Agronomy',2,4],['Soil Science',2,4],['Horticulture',2,3.5],['Entomology',2,4],
+    ['Plant Pathology',2,3.75],['Genetics and Plant Breeding',2,3.5],['Agricultural Extension',2,4],
+    ['Agronomy (Lab)',1,3.75],['Soil Science (Lab)',1,4],['Plant Pathology (Lab)',1,3.5],
+    ['Agricultural Extension (Lab)',1,4],['Study Tour',1,4]]},
+  {name:'Y4-S2', gpa:'3.845', rows:[
+    ['Agronomy',2,4],['Soil Science',2,4],['Horticulture',2,3.5],['Entomology',2,4],
+    ['Plant Pathology',2,3.75],['Genetics and Plant Breeding',2,3.75],['Agricultural Extension',2,4],
+    ['Horticulture (Lab)',1,3.75],['Entomology (Lab)',1,4],['Plant Pathology (Lab)',1,3.5],
+    ['Genetics and Plant Breeding (Lab)',1,3.5],['Internship',1,4],['Viva-voce',2,4]]}
+];
+const THEORY = [
+  ['Agronomy',6,7,9,58,80],['Soil Science',6,9,10,55,80],['Horticulture',6,6,10,58,80],
+  ['Plant Pathology',5,8,10,57,80],['Genetics and Plant Breeding',7,5,10,58,80],['Agricultural Extension',8,7,10,55,80]
+];
+const PRACT = [
+  ['Horticulture',4,7,3,26,40,1],['Plant Pathology',4,7,'-',30,41,1],['Genetics and Plant Breeding',4,7,'-',30,41,1],
+  ['Agricultural Extension',4,7,4,25,40,1],['Computer Application','-',7,7,30,44,1],['Viva-voce','-','-','-',80,80,2]
+];
+const PREV_SEMS = 5, EXISTING = 3.48, TARGET = 3.75;
+const SEM_GPA = SEMS.map(s => s.rows.reduce((a,r)=>a+r[1]*r[2],0) / s.rows.reduce((a,r)=>a+r[1],0));
+const TOTAL_SEMS = PREV_SEMS + SEMS.length;
+const TOTAL_GP = EXISTING*PREV_SEMS + SEM_GPA.reduce((a,b)=>a+b,0);
+const EXPECTED = TOTAL_GP / TOTAL_SEMS;
+const MAX_POSSIBLE = (EXISTING*PREV_SEMS + 4*SEMS.length) / TOTAL_SEMS;
+const f3 = n => Number(n).toFixed(3);
+
+const $ = s => document.querySelector(s);
+const f2 = n => Number(n).toFixed(2);
+const grade = g => `<span class="g${g==4?' top':''}">${f2(g)}</span>`;
+
+/* Progress scale (3.00 to 4.00) */
+const pos = v => ((v-3)*100).toFixed(2);
+$('#scale').innerHTML =
+  `<div class="fill" style="width:${pos(EXPECTED)}%"></div>
+   <div class="mk dn" style="left:${pos(EXISTING)}%"><span>Existing ${f2(EXISTING)}</span></div>
+   <div class="mk t dn" style="left:${pos(TARGET)}%"><span>Target ${f2(TARGET)}</span></div>
+   <div class="mk up" style="left:${pos(EXPECTED)}%"><span>Expected ${f3(EXPECTED)}</span></div>`;
+
+/* Semester GPA bars */
+$('#bars').innerHTML = [{name:'S1–S5',gpa:'3.48'}].concat(SEMS).map(s =>
+  `<div class="bar"><span>${s.name}</span><div class="track"><i style="width:${s.gpa/4*100}%"></i></div><b>${s.gpa}</b></div>`).join('');
+
+/* Overview figures and calculation */
+$('#expVal').textContent = f3(EXPECTED);
+$('#maxVal').textContent = f3(MAX_POSSIBLE);
+$('#note').innerHTML = `Expected CGPA <b>${f3(EXPECTED)}</b> is <b>${f3(TARGET-EXPECTED)}</b> below the target of <b>${f2(TARGET)}</b>. Even with 4.00 in all three semesters, the highest possible CGPA is <b>${f3(MAX_POSSIBLE)}</b>.`;
+
+/* Semester tables */
+$('#sems').innerHTML = SEMS.map((s,i) => {
+  const cr = s.rows.reduce((a,r)=>a+r[1],0), gp = s.rows.reduce((a,r)=>a+r[1]*r[2],0);
+  return `<div class="tbl-h"><h3>${s.name}</h3><span>GPA: <b>${s.gpa}</b></span></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Course</th><th class="n">Credit</th><th class="n">Grade</th><th class="n">Grade Point</th></tr></thead>
+      <tbody>${s.rows.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${grade(r[2])}</td><td class="n">${f2(r[1]*r[2])}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td>Total</td><td class="n">${cr}</td><td class="n">GPA: ${s.gpa}</td><td class="n">${f2(gp)}</td></tr></tfoot>
+    </table></div>`;
+}).join('');
+
+/* Assessment tables */
+$('#assess').innerHTML = `
+  <div class="tbl-h"><h3>Theory Courses</h3></div>
+  <div class="scroll"><table class="rt">
+    <thead><tr><th>Course</th><th class="n">CT-1</th><th class="n">CT-2</th><th class="n">Attendance</th><th class="n">Theory</th><th class="n">Total</th><th class="n">Grade</th><th class="n">Credit</th><th class="n">Grade Point</th></tr></thead>
+    <tbody>${THEORY.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2]}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td><td class="n">${r[5]}</td><td class="n">${grade(4)}</td><td class="n">2</td><td class="n">8.00</td></tr>`).join('')}</tbody>
+  </table></div>
+  <div class="tbl-h"><h3>Practical and Others</h3><span>SGPA: <b>4.000</b></span></div>
+  <div class="scroll"><table class="rt">
+    <thead><tr><th>Course</th><th class="n">Notebook</th><th class="n">Viva</th><th class="n">Report / Album</th><th class="n">Q&amp;A</th><th class="n">Total</th><th class="n">Grade</th><th class="n">Credit</th><th class="n">Grade Point</th></tr></thead>
+    <tbody>${PRACT.map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2]}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td><td class="n">${r[5]}</td><td class="n">${grade(4)}</td><td class="n">${r[6]}</td><td class="n">${f2(4*r[6])}</td></tr>`).join('')}</tbody>
+    <tfoot><tr><td colspan="7">Total</td><td class="n">19</td><td class="n">76.00</td></tr></tfoot>
+  </table></div>`;
+
+/* Mobile labels for stacked tables */
+document.querySelectorAll('table.rt').forEach(t=>{
+  const heads=[...t.querySelectorAll('thead th')].map(h=>h.textContent);
+  t.querySelectorAll('tbody tr,tfoot tr').forEach(tr=>{
+    let i=0;
+    [...tr.children].forEach(td=>{ td.dataset.label=heads[i]||''; i+=td.colSpan||1; });
+  });
+});
+
+/* Navigation + hamburger */
+const burger = $('#burger'), nav = $('#nav'), links = document.querySelectorAll('.nav .link');
+function setMenu(open){
+  nav.classList.toggle('show', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('show')));
+links.forEach(b => b.addEventListener('click', () => {
+  links.forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === b.dataset.t));
+  setMenu(false);
+  window.scrollTo({top:0});
+}));
+document.addEventListener('keydown', e => { if(e.key === 'Escape') setMenu(false); });
+</script>
+</body>
+</html>
